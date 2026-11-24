@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王尉竹 Arthur Wang</title>
+<meta name="description" content="王尉竹 Arthur Wang — 為金融而生的全端工程師。全端開發 × GenAI × 專案管理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080b; --bg-2:#101218; --fg:#f5f5f7; --muted:#86868b; --dim:#3a3b40; --line:#1f2128;
+  --gold:#d9b77e; --gold-2:#b08d57;
+  --grad:linear-gradient(100deg,#f3dcae 0%,#d9b77e 45%,#a9824c 100%);
+  --sans:"Inter","Noto Sans TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.muted{color:var(--muted)}
+
+/* ---------- nav + progress ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:14px clamp(16px,4vw,40px);font-size:13px;background:rgba(7,8,11,.72);backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav b{font-weight:600;letter-spacing:.02em}
+.nav nav{display:flex;gap:20px;align-items:center}
+.nav nav a{color:#c7c7cc;transition:color .2s}
+.nav nav a:hover{color:#fff}
+.nav .pill{background:var(--fg);color:#000;padding:6px 14px;border-radius:999px;font-weight:500}
+.nav .pill:hover{color:#000;background:#fff}
+.bar{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--doc,0));background:var(--grad);z-index:60}
+
+/* ---------- scene system ---------- */
+.scene{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  padding:72px clamp(16px,5vw,64px) 32px}
+[data-at]{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s}
+[data-at].on{opacity:1;transform:none}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 16px 48px;position:relative}
+.hero .photo{width:clamp(180px,26vw,280px);aspect-ratio:1;border-radius:50%;object-fit:cover;margin-bottom:36px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 55%,transparent 71%);mask-image:radial-gradient(circle at 50% 45%,#000 55%,transparent 71%)}
+.hero .glow{position:absolute;top:18%;left:50%;width:min(720px,100vw);aspect-ratio:1;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(217,183,126,.16),transparent 60%);pointer-events:none;z-index:-1}
+.hero h1{font:800 clamp(64px,13vw,168px)/1 var(--sans);letter-spacing:-.02em;margin:18px 0 8px}
+.hero .en{font:500 clamp(20px,2.6vw,30px)/1.2 var(--sans);color:var(--muted);letter-spacing:.01em}
+.hero .tag{font:700 clamp(24px,3.6vw,44px)/1.3 var(--sans);margin-top:36px}
+.hero .sub{color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin-top:12px}
+.hero > *{opacity:0;transform:translateY(20px);animation:rise 1.1s cubic-bezier(.2,.7,.2,1) forwards}
+.hero > :nth-child(2){animation-delay:.1s}.hero > :nth-child(3){animation-delay:.35s}.hero > :nth-child(4){animation-delay:.5s}
+.hero > :nth-child(5){animation-delay:.65s}.hero > :nth-child(6){animation-delay:.95s}.hero > :nth-child(7){animation-delay:1.1s}
+.hero .glow{animation:none;opacity:1;transform:translateX(-50%)}
+@keyframes rise{to{opacity:1;transform:none}}
+.scroll-hint{position:absolute;bottom:28px;left:50%;margin-left:-11px;width:22px;height:36px;border:1.5px solid #555;border-radius:12px}
+.scroll-hint::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:#aaa;animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- statement (characters light up) ---------- */
+.statement p{max-width:22em;font:700 clamp(28px,4.6vw,60px)/1.35 var(--sans);letter-spacing:-.005em}
+.statement .ch{color:var(--dim);transition:color .35s}
+.statement .ch.lit{color:var(--fg)}
+.statement .ch.lit.hl{color:var(--gold)}
+
+/* ---------- numbers ---------- */
+.numbers .stage{flex-direction:column;text-align:center}
+.numbers .lead{position:absolute;top:clamp(84px,14vh,140px);left:0;right:0}
+.num-wrap{position:relative;width:100%;height:min(52vh,420px)}
+.num-item{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.92);filter:blur(10px);transition:opacity .7s,transform .9s cubic-bezier(.2,.7,.2,1),filter .7s}
+.num-item.on{opacity:1;transform:none;filter:none}
+.num-item .big{font:800 clamp(96px,20vw,240px)/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.num-item .big em{font-style:normal;font-size:.36em;margin-left:.08em;letter-spacing:0}
+.num-item h3{font:700 clamp(22px,3vw,34px)/1.3 var(--sans);margin-top:18px}
+.num-item p{color:var(--muted);margin-top:8px;font-size:clamp(14px,1.5vw,17px)}
+.dots{position:absolute;bottom:clamp(28px,8vh,72px);left:0;right:0;display:flex;justify-content:center;gap:10px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#333;transition:background .4s,width .4s}
+.dots i.on{background:var(--gold);width:22px;border-radius:4px}
+
+/* ---------- feature layout ---------- */
+.feature .stage{gap:clamp(24px,5vw,80px)}
+.f-text{flex:1 1 0;max-width:520px}
+.f-visual{flex:1 1 0;max-width:560px;width:100%;display:flex;align-items:center;justify-content:center}
+.f-text h2{font:800 clamp(34px,5vw,64px)/1.12 var(--sans);letter-spacing:-.01em;margin:16px 0 20px}
+.f-text p{color:#a1a1a6;font-size:clamp(15px,1.4vw,18px)}
+.f-text p strong{color:var(--fg);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{font-size:13px;color:#d2d2d7;border:1px solid #2c2e36;background:#111319;padding:5px 12px;border-radius:999px}
+.result{display:flex;gap:clamp(20px,3vw,40px);margin-top:26px;flex-wrap:wrap}
+.result div b{display:block;font:800 clamp(28px,3.4vw,44px)/1.1 var(--sans)}
+.result div span{font-size:13px;color:var(--muted)}
+
+/* feature 01: monolith -> pods */
+.pods{position:relative;width:100%;aspect-ratio:1.5}
+.pod{position:absolute;top:22%;left:41%;width:18%;height:56%;border-radius:14px;
+  background:linear-gradient(160deg,#20232c,#14161c);border:1px solid #2f323c;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:12px;font:600 12px var(--sans);color:transparent;transition:color .5s,border-color .5s,box-shadow .5s;
+  transform:translateX(calc((var(--i) - 2) * var(--spread,0) * 112%))}
+.pods.split .pod{color:var(--gold);border-color:rgba(217,183,126,.45);box-shadow:0 0 40px -12px rgba(217,183,126,.35)}
+.mono-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 clamp(15px,1.6vw,19px) var(--sans);
+  color:#c7c7cc;opacity:calc(1 - var(--spread,0) * 3);pointer-events:none}
+.pods .ocp{position:absolute;left:0;right:0;bottom:4%;text-align:center;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+
+/* feature 02: agents */
+.agents{width:100%;max-width:460px}
+.agents svg{width:100%;height:auto;overflow:visible}
+.agents line{stroke:url(#g1);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--draw,0))}
+.agents .node{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:center;transition:opacity .6s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.agents .node.on{opacity:1;transform:none}
+.agents circle{fill:#14161c;stroke:#3a3d48;stroke-width:1.5}
+.agents .core circle{stroke:var(--gold);fill:#1a1710}
+.agents text{fill:#f5f5f7;font:600 15px var(--sans);text-anchor:middle}
+.agents text.s{fill:#86868b;font:500 11px var(--sans)}
+
+/* feature 03: pipeline */
+.pipe{width:100%;max-width:480px;display:grid;gap:14px}
+.step{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;background:#101218;border:1px solid #1f2128;
+  opacity:.25;transform:none;transition:opacity .6s,border-color .6s,background .6s}
+.step.on{opacity:1;border-color:rgba(217,183,126,.4);background:#14130f}
+.step b{font:800 26px var(--sans);color:var(--gold)}
+.step h4{font-size:17px;font-weight:700}
+.step p{font-size:13px;color:var(--muted)}
+
+/* feature 04: sdlc track */
+.track{width:100%;max-width:520px}
+.track .rail{position:relative;height:4px;border-radius:2px;background:#22242c;margin:0 8% 0}
+.track .fill{position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--fill,0));background:var(--grad);border-radius:2px}
+.track .stages{display:grid;grid-template-columns:repeat(3,1fr);margin-top:-14px;text-align:center}
+.track .st i{display:block;width:24px;height:24px;margin:0 auto 14px;border-radius:50%;background:#14161c;border:2px solid #3a3d48;transition:all .5s}
+.track .st.on i{background:var(--gold);border-color:var(--gold);box-shadow:0 0 24px rgba(217,183,126,.5)}
+.track .st h4{font-size:16px;font-weight:700}
+.track .st p{font-size:12.5px;color:var(--muted);margin-top:4px;padding:0 6px}
+.track .st{opacity:.35;transform:none;transition:opacity .5s}
+.track .st.on{opacity:1}
+.track .launch{margin-top:44px;text-align:center}
+.track .launch b{font:800 clamp(40px,6vw,72px)/1 var(--sans)}
+.track .launch span{display:block;color:var(--muted);margin-top:8px;font-size:14px}
+
+/* ---------- specs ---------- */
+.specs{max-width:980px;margin:0 auto;padding:clamp(96px,14vh,160px) clamp(16px,5vw,40px)}
+.specs h2{font:800 clamp(40px,6vw,72px)/1.1 var(--sans);margin:14px 0 48px}
+.spec{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.spec:last-child{border-bottom:1px solid var(--line)}
+.spec dt{font-weight:600;color:#d2d2d7}
+.spec dt small{display:block;font-weight:500;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.spec dd{color:#a1a1a6}
+.spec dd b{color:var(--fg);font-weight:600}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+
+/* ---------- one more thing ---------- */
+.omt .stage{flex-direction:column;text-align:center}
+.omt .tease{position:absolute;font:700 clamp(34px,5.4vw,64px)/1.2 var(--sans);font-style:italic;color:#d2d2d7;
+  opacity:calc(1 - var(--p,0) * 3.2);transform:scale(calc(1 - var(--p,0) * .25))}
+.omt .reveal{max-width:760px}
+.omt .reveal .big{font:800 clamp(72px,13vw,160px)/1 var(--sans);letter-spacing:-.03em}
+.omt .reveal h3{font:800 clamp(28px,4vw,48px)/1.2 var(--sans);margin:16px 0 20px}
+.omt .reveal p{color:#a1a1a6;font-size:clamp(15px,1.5vw,19px);max-width:34em;margin:0 auto}
+
+/* ---------- CTA ---------- */
+.cta{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 16px 64px;
+  background:radial-gradient(ellipse at 50% 100%,rgba(217,183,126,.14),transparent 60%)}
+.cta h2{font:800 clamp(48px,9vw,112px)/1.05 var(--sans);letter-spacing:-.02em}
+.cta .for{color:var(--muted);margin-top:18px;font-size:clamp(15px,1.6vw,19px)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--fg);color:#000}
+.btn.ghost{border:1px solid #3a3d48;color:var(--fg)}
+.btn.ghost:hover{background:#15171d}
+.cta .classic{margin-top:36px;font-size:14px;color:var(--gold)}
+.cta .classic:hover{text-decoration:underline;text-underline-offset:4px}
+footer{text-align:center;color:#55565c;font-size:12px;padding:0 16px 32px}
+
+/* ---------- mobile ---------- */
+@media (max-width:820px){
+  .nav nav a:not(.pill){display:none}
+  .feature .stage{flex-direction:column;justify-content:center;gap:24px;padding-top:68px}
+  .f-visual{order:-1;flex:0 0 auto;max-width:420px}
+  .f-text{flex:0 0 auto}
+  .f-text h2{margin:10px 0 12px}
+  .f-text p{font-size:14.5px}
+  .chips{margin-top:14px}.result{margin-top:16px}
+  .pods{aspect-ratio:1.9}
+  .agents{max-width:300px}
+  .pipe{gap:8px}.step{padding:10px 14px;grid-template-columns:40px 1fr;gap:10px}.step b{font-size:20px}.step h4{font-size:15px}.step p{font-size:12px}
+  .track .launch{margin-top:24px}
+  .spec{grid-template-columns:1fr;gap:6px;padding:18px 0}
+}
+@media (max-width:820px) and (max-height:760px){
+  .f-text p{display:none}
+  .f-visual{max-width:340px}
+}
+
+/* ---------- reduced motion: show everything, no pinning ---------- */
+.static .scene{height:auto!important}
+.static .stage{position:relative;height:auto;min-height:100svh;padding-top:96px;padding-bottom:96px}
+.static [data-at],.static .rv,.static .step,.static .track .st{opacity:1;transform:none;transition:none}
+.static .numbers .lead{position:static;margin-bottom:24px}
+.static .num-wrap{height:auto;display:grid;gap:48px}
+.static .num-item{position:static;opacity:1;transform:none;filter:none}
+.static .dots{display:none}
+.static .omt .tease{display:none}
+.static .hero > *{animation:none;opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<header class="nav">
+  <b>Arthur Wang</b>
+  <nav>
+    <a href="#f1">作品</a>
+    <a href="#specs">規格</a>
+    <a href="classic.html">經典版履歷</a>
+    <a class="pill" href="#contact">聯絡</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow"></div>
+  <img class="photo" src="photo.jpg" alt="王尉竹 Arthur Wang">
+  <p class="eyebrow">Introducing</p>
+  <h1>王尉竹</h1>
+  <p class="en">Arthur Wang</p>
+  <p class="tag">為<span class="grad">金融</span>而生的全端工程師。</p>
+  <p class="sub">全端開發 × GenAI × 專案管理，三合一。</p>
+  <div class="scroll-hint" aria-hidden="true"></div>
+</section>
+
+<!-- STATEMENT -->
+<section class="scene statement" data-scene="statement" style="height:300vh">
+  <div class="stage">
+    <p id="statement">從需求訪談到上線維運，從單體架構到微服務，從規則比對到 AI 代理。三年多來，我把複雜的金融系統，做成<mark>真正上線、真正被使用</mark>的產品。</p>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="scene numbers" data-scene="numbers" style="height:420vh">
+  <div class="stage">
+    <p class="eyebrow lead">By the numbers</p>
+    <div class="num-wrap">
+      <div class="num-item" data-from="0" data-to=".25">
+        <div class="big grad"><span data-count="50">50</span><em>%+</em></div>
+        <h3>授信審核紙本作業減少</h3>
+        <p>銀行授信系統微服務改版 · 上線六個月後</p>
+      </div>
+      <div class="num-item" data-from=".25" data-to=".5">
+        <div class="big grad"><span data-count="30">30</span><em>%</em></div>
+        <h3>ESG 報告人工審閱量減少</h3>
+        <p>Multi-Agent 自動化系統 · 獲金融機構正式採用</p>
+      </div>
+      <div class="num-item" data-from=".5" data-to=".75">
+        <div class="big grad"><span data-count="0.5" data-dec="1">0.5</span><em>個月</em></div>
+        <h3>專案比預定時程提前上線</h3>
+        <p>AI 導入 SDLC 三階段標準流程</p>
+      </div>
+      <div class="num-item" data-from=".75" data-to="2">
+        <div class="big grad"><span data-count="30">30</span><em>+</em></div>
+        <h3>高複用後端核心 Service</h3>
+        <p>授信無紙化審核流程 · 前後端介面與 API 規格</p>
+      </div>
+    </div>
+    <div class="dots"><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- FEATURE 01 -->
+<section class="scene feature" id="f1" data-scene="pods" style="height:260vh">
+  <div class="stage">
+    <div class="f-text">
+      <p class="eyebrow" data-at="0">Feature 01 · 銀行授信系統</p>
+      <h2 data-at="0">一個龐然大物，<br>拆成<span class="grad">五個</span>。</h2>
+      <p data-at=".08">主導將授信系統從單體架構拆分為 <strong>5 個微服務 Pod</strong>，部署於 Red Hat OpenShift，並以 Jenkins 建置 CI/CD 自動化部署。</p>
+      <div class="chips" data-at=".62"><span>弱掃修復</span><span>Log 稽核軌跡</span><span>進退版機制</span></div>
+      <div class="result" data-at=".75">
+        <div><b class="grad">50%+</b><span>紙本作業減少</span></div>
+        <div><b>30+</b><span>共用核心 Service</span></div>
+      </div>
+    </div>
+    <div class="f-visual">
+      <div class="pods" id="pods">
+        <div class="pod" style="--i:0">Pod</div><div class="pod" style="--i:1">Pod</div><div class="pod" style="--i:2">Pod</div><div class="pod" style="--i:3">Pod</div><div class="pod" style="--i:4">Pod</div>
+        <div class="mono-label">單體架構</div>
+        <div class="ocp">Red Hat OpenShift</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 02 -->
+<section class="scene feature" data-scene="agents" style="height:260vh">
+  <div class="stage">
+    <div class="f-text">
+      <p class="eyebrow" data-at="0">Feature 02 · ESG 評等自動化系統</p>
+      <h2 data-at="0">三個 AI 代理，<br>一份<span class="grad">可信</span>的報告。</h2>
+      <p data-at=".08">以 AutoGen 設計 Multi-Agent 分工：擷取、摘要、審查各司其職，並規劃代理之間的協作與審查流程，確保報告品質。</p>
+      <div class="result" data-at=".7">
+        <div><b class="grad">−30%</b><span>人工審閱工作量</span></div>
+        <div><b>6 個月</b><span>內獲金融機構正式採用</span></div>
+      </div>
+    </div>
+    <div class="f-visual">
+      <div class="agents" id="agents">
+        <svg viewBox="0 0 400 360" aria-label="三個 AI 代理協作產出 ESG 報告">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#f3dcae"/><stop offset="1" stop-color="#a9824c"/></linearGradient></defs>
+          <line x1="200" y1="70" x2="70" y2="285" pathLength="1"/>
+          <line x1="70" y1="285" x2="330" y2="285" pathLength="1"/>
+          <line x1="330" y1="285" x2="200" y2="70" pathLength="1"/>
+          <line x1="200" y1="70" x2="200" y2="210" pathLength="1"/>
+          <line x1="70" y1="285" x2="200" y2="210" pathLength="1"/>
+          <line x1="330" y1="285" x2="200" y2="210" pathLength="1"/>
+          <g class="node" data-at=".1"><circle cx="200" cy="70" r="46"/><text x="200" y="68">擷取</text><text class="s" x="200" y="86">Agent</text></g>
+          <g class="node" data-at=".22"><circle cx="70" cy="285" r="46"/><text x="70" y="283">摘要</text><text class="s" x="70" y="301">Agent</text></g>
+          <g class="node" data-at=".34"><circle cx="330" cy="285" r="46"/><text x="330" y="283">審查</text><text class="s" x="330" y="301">Agent</text></g>
+          <g class="node core" data-at=".55"><circle cx="200" cy="210" r="38"/><text x="200" y="208">ESG</text><text class="s" x="200" y="225">報告</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 03 -->
+<section class="scene feature" data-scene="pipe" style="height:260vh">
+  <div class="stage">
+    <div class="f-text">
+      <p class="eyebrow" data-at="0">Feature 03 · 負面新聞風險分析系統</p>
+      <h2 data-at="0">客戶的風險輪廓，<br><span class="grad">一眼看清</span>。</h2>
+      <p data-at=".08">從新聞蒐集、雙層篩檢到 AI 摘要，一條龍完成。主導開發與全端實作，持續以 Prompt Engineering 打磨產出品質，協助審核人員更快掌握客戶風險。</p>
+    </div>
+    <div class="f-visual">
+      <div class="pipe">
+        <div class="step" data-at=".12"><b>01</b><div><h4>蒐集</h4><p>Selenium 爬蟲 + 新聞 API，清洗並標籤歸檔</p></div></div>
+        <div class="step" data-at=".3"><b>02</b><div><h4>篩檢</h4><p>偵測企業／個人戶高風險關鍵字</p></div></div>
+        <div class="step" data-at=".48"><b>03</b><div><h4>交叉比對</h4><p>串接司法院裁判書 API 二次驗證</p></div></div>
+        <div class="step" data-at=".66"><b>04</b><div><h4>AI 摘要</h4><p>串接 OpenAI 產出風險摘要報告</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 04 -->
+<section class="scene feature" data-scene="track" style="height:260vh">
+  <div class="stage">
+    <div class="f-text">
+      <p class="eyebrow" data-at="0">Feature 04 · 電信業系統重構</p>
+      <h2 data-at="0">讓 AI 走完<br><span class="grad">整個開發流程</span>。</h2>
+      <p data-at=".08">舊系統文件缺漏，就用 AI 逆向工程還原業務邏輯。擔任 PM 帶領 3 人團隊，建立 AI 輔助開發標準流程，最後由人工審查放行。</p>
+    </div>
+    <div class="f-visual">
+      <div class="track" id="track">
+        <div class="rail"><div class="fill"></div></div>
+        <div class="stages">
+          <div class="st" data-at=".1"><i></i><h4>需求分析</h4><p>AI 逆向工程 · SA 規格 · Prototype</p></div>
+          <div class="st" data-at=".32"><i></i><h4>系統設計</h4><p>AI 協助產出 SD 文件</p></div>
+          <div class="st" data-at=".54"><i></i><h4>開發</h4><p>AI 輔助 Coding · Review · PR</p></div>
+        </div>
+        <div class="launch" data-at=".7"><b class="grad">提早半個月</b><span>比預定時程上線</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" id="specs">
+  <p class="eyebrow rv">Tech Specs</p>
+  <h2 class="rv">技術規格。</h2>
+  <dl>
+    <div class="spec rv"><dt>型號<small>Model</small></dt><dd><b>王尉竹 Arthur Wang</b> · 軟體工程師（全端開發／系統分析／專案 PM）</dd></div>
+    <div class="spec rv"><dt>核心處理器<small>Backend</small></dt><dd>Java · Spring Boot · Hibernate · Python · Flask · RESTful API</dd></div>
+    <div class="spec rv"><dt>顯示介面<small>Frontend</small></dt><dd>Vue 3 · React · JavaScript · JSP · HTML / CSS</dd></div>
+    <div class="spec rv"><dt>AI 引擎<small>GenAI</small></dt><dd><b>RAG · Multi-Agent (AutoGen)</b> · OpenAI API · Prompt Engineering · Claude Code · Codex</dd></div>
+    <div class="spec rv"><dt>儲存<small>Database</small></dt><dd>Oracle · MS SQL Server · MySQL · IBM DB2 · Pinecone</dd></div>
+    <div class="spec rv"><dt>部署平台<small>DevOps &amp; Cloud</small></dt><dd>Docker · Red Hat OCP · Jenkins · Azure DevOps · Git · AWS</dd></div>
+    <div class="spec rv"><dt>安全與合規<small>Compliance</small></dt><dd>弱掃修復 · Log 稽核軌跡 · 進退版機制（金融業規範）</dd></div>
+    <div class="spec rv"><dt>系統分析<small>Analysis</small></dt><dd>需求訪談 · SA / SD 文件 · API 規格 · 資料流程圖 · Prototype</dd></div>
+    <div class="spec rv"><dt>認證<small>Certifications</small></dt><dd><b>PMP</b> · <b>PMI-ACP</b> · AWS Certified AI Practitioner · AWS Certified Cloud Practitioner</dd></div>
+    <div class="spec rv"><dt>出廠<small>Education</small></dt><dd>國立彰化師範大學 數學系 · iSpan 資展國際 跨域 Java 軟體工程師養成班</dd></div>
+    <div class="spec rv"><dt>語言支援<small>Languages</small></dt><dd>中文（母語）· 英文（中等）· 台語（基礎）</dd></div>
+    <div class="spec rv"><dt>目前服役<small>Current</small></dt><dd>經貿聯網科技股份有限公司 · 2023.02 至今</dd></div>
+  </dl>
+</section>
+
+<!-- ONE MORE THING -->
+<section class="scene omt" data-scene="omt" style="height:220vh">
+  <div class="stage">
+    <p class="tease">One more thing.</p>
+    <div class="reveal">
+      <div class="big grad" data-at=".3">8 年</div>
+      <h3 data-at=".38">數學教學，內建翻譯器。</h3>
+      <p data-at=".46">把複雜的技術拆解成業務聽得懂的語言，在業務單位與技術團隊之間搭橋。曾帶領 4 人教學團隊 5 年以上，主編教材與模擬試題，並制定新進講師培訓計畫。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2 class="rv">現已開放<span class="grad">洽談</span>。</h2>
+  <p class="for rv">適用於 Fintech · 個金 AI 專案 · 系統設計</p>
+  <div class="btns rv">
+    <a class="btn primary" href="mailto:arthur19910322@gmail.com">Email 聯絡</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/nickwang322/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="王尉竹_ArthurWang_Resume.pdf" download>下載 PDF 履歷</a>
+  </div>
+  <a class="classic rv" href="classic.html">看經典版履歷 →</a>
+</section>
+<footer>© 2026 王尉竹 Arthur Wang · github.com/ArthurWang322</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v,a,b){ return Math.min(b===undefined?1:b, Math.max(a||0, v)); };
+
+  // split statement into characters; <mark> part gets highlight class
+  var st = document.getElementById('statement');
+  var html = '';
+  st.childNodes.forEach(function(n){
+    var hl = n.nodeName === 'MARK';
+    Array.from(n.textContent).forEach(function(c){ html += '<span class="ch' + (hl ? ' hl' : '') + '">' + c + '</span>'; });
+  });
+  st.innerHTML = html;
+  var chars = st.querySelectorAll('.ch');
+
+  if (reduce) {
+    document.documentElement.classList.add('static');
+    chars.forEach(function(c){ c.classList.add('lit'); });
+    document.querySelectorAll('.pods').forEach(function(p){ p.style.setProperty('--spread',1); p.classList.add('split'); });
+    document.querySelectorAll('.agents').forEach(function(a){ a.style.setProperty('--draw',1); });
+    document.querySelectorAll('.track').forEach(function(t){ t.style.setProperty('--fill',1); });
+    document.querySelectorAll('.node').forEach(function(n){ n.classList.add('on'); });
+    return;
+  }
+
+  function countUp(el){
+    var target = parseFloat(el.dataset.count), dec = +(el.dataset.dec||0), t0 = null;
+    function step(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 1100, 1);
+      el.textContent = (target * (1 - Math.pow(1 - p, 3))).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var hooks = {
+    statement: function(s,p){
+      var lit = clamp(p / .8) * chars.length;
+      chars.forEach(function(c,i){ c.classList.toggle('lit', i < lit); });
+    },
+    numbers: function(s,p){
+      var items = s.querySelectorAll('.num-item'), dots = s.querySelectorAll('.dots i');
+      items.forEach(function(it,i){
+        var on = p >= +it.dataset.from && p < +it.dataset.to;
+        if (on && !it.classList.contains('on')) it.querySelectorAll('[data-count]').forEach(countUp);
+        it.classList.toggle('on', on);
+        dots[i].classList.toggle('on', on);
+      });
+    },
+    pods: function(s,p){
+      var t = clamp((p - .15) / .42), e = 1 - Math.pow(1 - t, 3), box = s.querySelector('.pods');
+      box.style.setProperty('--spread', e.toFixed(4));
+      box.classList.toggle('split', t > .92);
+    },
+    agents: function(s,p){
+      s.querySelector('.agents').style.setProperty('--draw', clamp((p - .12) / .45).toFixed(4));
+    },
+    track: function(s,p){
+      s.querySelector('.track').style.setProperty('--fill', clamp((p - .08) / .5).toFixed(4));
+    }
+  };
+
+  var scenes = Array.from(document.querySelectorAll('.scene'));
+  var bar = document.querySelector('.bar'), raf = 0;
+  function update(){
+    raf = 0;
+    var vh = innerHeight;
+    var doc = scrollY / Math.max(1, document.documentElement.scrollHeight - vh);
+    bar.style.setProperty('--doc', clamp(doc).toFixed(4));
+    scenes.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 2) return;
+      var p = clamp(-r.top / Math.max(1, r.height - vh));
+      s.style.setProperty('--p', p.toFixed(4));
+      s.querySelectorAll('[data-at]').forEach(function(el){ el.classList.toggle('on', p >= +el.dataset.at); });
+      if (hooks[s.dataset.scene]) hooks[s.dataset.scene](s, p);
+    });
+  }
+  addEventListener('scroll', function(){ if (!raf) raf = requestAnimationFrame(update); }, {passive:true});
+  addEventListener('resize', update);
+  update();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, {threshold:.2});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

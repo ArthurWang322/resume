@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王尉竹 Arthur Wang · 履歷</title>
+<meta name="description" content="王尉竹 Arthur Wang — 金融系統全端工程師｜GenAI 應用開發｜PMP · PMI-ACP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --navy:#16213a; --navy-2:#1f2c4a; --ink:#1d2230; --muted:#5d6473; --line:#e4e0d8;
+  --paper:#faf8f4; --sheet:#ffffff; --brass:#b08d57; --brass-soft:#efe6d6;
+  --side-ink:#e9ecf3; --side-muted:#a3adc2;
+  --sans:"Inter","Noto Sans TC",system-ui,sans-serif; --serif:"Noto Serif TC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:15px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+.sheet{max-width:1080px;margin:48px auto;background:var(--sheet);display:grid;grid-template-columns:320px minmax(0,1fr);
+  box-shadow:0 1px 2px rgba(22,33,58,.06),0 24px 60px -20px rgba(22,33,58,.18)}
+
+/* ---------- sidebar ---------- */
+.side{background:var(--navy);color:var(--side-ink);padding:48px 36px}
+.side-inner{position:sticky;top:40px}
+.photo{width:148px;height:148px;border-radius:50%;object-fit:cover;display:block;margin-bottom:32px;
+  box-shadow:0 0 0 4px var(--navy),0 0 0 5px rgba(176,141,87,.6)}
+.side h3{font:600 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:30px 0 14px}
+.side h3:first-of-type{margin-top:0}
+.contact li{font-size:13.5px;margin-bottom:8px;display:flex;gap:10px;align-items:center;word-break:break-all}
+.contact svg{flex:none;width:14px;height:14px;stroke:var(--brass);fill:none;stroke-width:1.8}
+.contact a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.skill{margin-bottom:12px}
+.skill b{display:block;font-size:12.5px;font-weight:600;color:#fff;margin-bottom:2px}
+.skill span{font-size:12.5px;color:var(--side-muted);line-height:1.6}
+.cert li,.edu li{margin-bottom:10px;font-size:13px;line-height:1.5}
+.cert li b,.edu li b{display:block;color:#fff;font-weight:500}
+.cert li span,.edu li span{color:var(--side-muted);font-size:12px}
+.lang{font-size:13px;color:var(--side-muted)}
+
+/* ---------- main ---------- */
+.main{padding:56px 56px 52px}
+.eyebrow{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+h1{font:700 44px/1.15 var(--serif);color:var(--navy);margin:14px 0 6px;letter-spacing:.04em}
+h1 small{font:500 22px/1 var(--sans);color:var(--muted);letter-spacing:.02em;margin-left:12px}
+.title{font-size:16px;font-weight:500;color:var(--ink)}
+.title i{font-style:normal;color:var(--brass);margin:0 8px}
+.summary{margin-top:18px;color:#3a4050;font-size:14.5px;max-width:62ch}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin:34px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric{padding:20px 16px 18px;border-left:1px solid var(--line)}
+.metric:first-child{border-left:0;padding-left:0}
+.metric .num{font:600 34px/1 var(--serif);color:var(--navy);font-variant-numeric:tabular-nums}
+.metric .num em{font:500 15px var(--sans);font-style:normal;color:var(--brass);margin-left:2px}
+.metric p{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+h2{display:flex;align-items:center;gap:14px;font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin:40px 0 20px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.job-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.job-head h4{font:700 18px/1.5 var(--serif);color:var(--navy)}
+.job-head time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.job-role{font-size:14px;color:var(--muted);margin:4px 0 18px}
+
+.proj{position:relative;padding:0 0 22px 22px;border-left:1px solid var(--line);margin-left:4px}
+.proj:last-child{padding-bottom:4px}
+.proj::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--sheet);border:2px solid var(--brass)}
+.proj-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.proj h5{font-size:15.5px;font-weight:700;color:var(--ink)}
+.proj .role{font-size:12px;color:var(--brass);font-weight:500;background:var(--brass-soft);padding:1px 8px;border-radius:3px}
+.proj ul{margin-top:6px}
+.proj li{font-size:14px;color:#3a4050;padding-left:14px;position:relative;margin-bottom:3px}
+.proj li::before{content:"";position:absolute;left:0;top:.8em;width:5px;height:1px;background:var(--muted)}
+.proj li strong{color:var(--navy);font-weight:700}
+.tech{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.tech span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:1px 8px;border-radius:999px}
+
+.prev-desc{font-size:14px;color:#3a4050;margin-top:-10px}
+
+.dl{position:fixed;right:28px;bottom:28px;display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
+  font:500 13px/1 var(--sans);padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px -10px rgba(22,33,58,.5);
+  transition:transform .25s ease,background .25s ease}
+.dl:hover{transform:translateY(-2px);background:var(--navy-2)}
+.dl svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ---------- reveal animation ---------- */
+.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js [data-reveal].in{opacity:1;transform:none}
+.js h2[data-reveal]::after{transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.7,.2,1) .15s}
+.js h2[data-reveal].in::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal]{opacity:1;transform:none;transition:none}
+  .js h2[data-reveal]::after{transform:none}
+}
+
+/* ---------- responsive ---------- */
+@media screen and (max-width:900px){
+  .sheet{grid-template-columns:minmax(0,1fr);margin:0}
+  .side{padding:36px 20px}
+  .side-inner{position:static}
+  .main{padding:36px 20px 80px}
+  h1{font-size:34px}
+  h1 small{display:block;margin:8px 0 0;font-size:18px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric{padding:16px 12px}
+  .metric:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .metric:nth-child(4){border-top:1px solid var(--line)}
+  .dl{right:16px;bottom:16px}
+}
+
+/* ---------- print: single A4 page ---------- */
+@page{size:A4;margin:0}
+@media print{
+  html,body{background:#fff;font-size:8.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dl{display:none}
+  [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+  h2::after{transform:none!important}
+  .sheet{width:210mm;height:297mm;margin:0;max-width:none;box-shadow:none;grid-template-columns:62mm 1fr;overflow:hidden}
+  .side{padding:11mm 7mm 8mm 8mm}
+  .side-inner{position:static}
+  .photo{width:30mm;height:30mm;margin-bottom:6mm}
+  .side h3{font-size:7.2pt;margin:6.2mm 0 2.6mm}
+  .contact li{font-size:7.8pt;margin-bottom:1.2mm}
+  .skill{margin-bottom:2.2mm}
+  .skill b,.skill span{font-size:7.9pt;line-height:1.5}
+  .cert li,.edu li{font-size:8pt;margin-bottom:2mm}
+  .cert li span,.edu li span,.lang{font-size:7.2pt}
+  .main{padding:11mm 10mm 8mm 9mm}
+  .eyebrow{font-size:6.8pt}
+  h1{font-size:24pt;margin:2.5mm 0 1mm}
+  h1 small{font-size:12pt}
+  .title{font-size:9.6pt}
+  .summary{font-size:9pt;margin-top:3mm;line-height:1.6}
+  .metrics{margin:5.5mm 0 0}
+  .metric{padding:3.6mm 3mm}
+  .metric .num{font-size:19pt}
+  .metric .num em{font-size:8.5pt}
+  .metric p{font-size:7.6pt;margin-top:1.5mm}
+  h2{font-size:7.2pt;margin:6.5mm 0 3.5mm}
+  .job-head h4{font-size:10.5pt}
+  .job-head time{font-size:7.8pt}
+  .job-role{font-size:8.3pt;margin:.8mm 0 3.5mm}
+  .proj{padding:0 0 4mm 4mm}
+  .proj::before{top:1.3mm;width:6px;height:6px;left:-4px}
+  .proj h5{font-size:9.6pt}
+  .proj .role{font-size:7pt}
+  .proj ul{margin-top:.8mm}
+  .proj li{font-size:8.7pt;line-height:1.6;margin-bottom:.5mm;padding-left:3mm}
+  .tech{margin-top:1.2mm;gap:1.2mm}
+  .tech span{font-size:6.8pt;padding:0 2mm}
+  .prev-desc{font-size:8.7pt;line-height:1.6;margin-top:-1.5mm}
+}
+</style>
+</head>
+<body>
+
+<article class="sheet">
+  <aside class="side">
+    <div class="side-inner">
+      <img class="photo" src="photo.jpg" alt="王尉竹 Arthur Wang" data-reveal>
+
+      <h3 data-reveal>Contact</h3>
+      <ul class="contact">
+        <li data-reveal style="--d:.05s"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:arthur19910322@gmail.com">arthur19910322@gmail.com</a></li>
+        <li data-reveal style="--d:.1s"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg><a href="https://www.linkedin.com/in/nickwang322/" target="_blank" rel="noopener">linkedin.com/in/nickwang322</a></li>
+        <li data-reveal style="--d:.15s"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.5 2.5 5.5 2.8 5.5 2.8a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.1 9.2c0 4.6 2.8 5.7 5.5 6a3 3 0 0 0-.8 2.3V21"/></svg><a href="https://github.com/ArthurWang322" target="_blank" rel="noopener">github.com/ArthurWang322</a></li>
+      </ul>
+
+      <h3 data-reveal>Skills</h3>
+      <div class="skill" data-reveal><b>AI / GenAI</b><span>RAG · Multi-Agent (AutoGen) · OpenAI API · Prompt Engineering · Claude Code · Codex</span></div>
+      <div class="skill" data-reveal style="--d:.05s"><b>Backend</b><span>Java · Spring Boot · Hibernate · Python · Flask · RESTful API</span></div>
+      <div class="skill" data-reveal style="--d:.1s"><b>Frontend</b><span>Vue 3 · React · JavaScript · JSP · HTML / CSS</span></div>
+      <div class="skill" data-reveal style="--d:.15s"><b>Database</b><span>Oracle · MS SQL Server · MySQL · IBM DB2 · Pinecone</span></div>
+      <div class="skill" data-reveal style="--d:.2s"><b>DevOps &amp; Cloud</b><span>Docker · Red Hat OCP · Jenkins · Azure DevOps · Git · AWS</span></div>
+      <div class="skill" data-reveal style="--d:.25s"><b>金融合規</b><span>弱掃修復 · Log 稽核軌跡 · 進退版機制</span></div>
+      <div class="skill" data-reveal style="--d:.3s"><b>系統分析</b><span>需求訪談 · SA / SD 文件 · API 規格 · 資料流程圖 · Prototype</span></div>
+
+      <h3 data-reveal>Certifications</h3>
+      <ul class="cert">
+        <li data-reveal><b>PMP 國際專案管理師</b><span>PMI · 2025 – 2031</span></li>
+        <li data-reveal style="--d:.05s"><b>PMI-ACP 敏捷專案管理師</b><span>PMI · 2026 – 2029</span></li>
+        <li data-reveal style="--d:.1s"><b>AWS Certified AI Practitioner</b><span>Amazon Web Services · 2025 – 2028</span></li>
+        <li data-reveal style="--d:.15s"><b>AWS Certified Cloud Practitioner</b><span>Amazon Web Services · 2025 – 2028</span></li>
+      </ul>
+
+      <h3 data-reveal>Education</h3>
+      <ul class="edu">
+        <li data-reveal><b>國立彰化師範大學 數學系</b><span>學士 · 2009 – 2013</span></li>
+        <li data-reveal style="--d:.05s"><b>iSpan 資展國際</b><span>跨域 Java 軟體工程師養成班 · 2022 – 2023</span></li>
+      </ul>
+
+      <h3 data-reveal>Languages</h3>
+      <p class="lang" data-reveal>中文（母語）· 英文（中等）· 台語（基礎）</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header>
+      <p class="eyebrow" data-reveal>Software Engineer · Fintech</p>
+      <h1 data-reveal style="--d:.08s">王尉竹<small>Arthur Wang</small></h1>
+      <p class="title" data-reveal style="--d:.16s">金融系統全端工程師<i>/</i>GenAI 應用開發<i>/</i>PMP · PMI-ACP</p>
+      <p class="summary" data-reveal style="--d:.24s">3 年以上金融與電信系統全端開發經驗，從需求訪談、SA／SD、開發測試到上線維運完整參與。主導銀行授信系統微服務化，並將 RAG 與 Multi-Agent 應用落地至金融機構。數學系出身、8 年教學經驗，擅長把複雜問題拆解講清楚，串起業務單位與技術團隊。</p>
+    </header>
+
+    <section class="metrics">
+      <div class="metric" data-reveal><div class="num"><span data-count="50">50</span><em>%+</em></div><p>授信紙本作業減少</p></div>
+      <div class="metric" data-reveal style="--d:.1s"><div class="num"><span data-count="30">30</span><em>%</em></div><p>ESG 人工審閱減少</p></div>
+      <div class="metric" data-reveal style="--d:.2s"><div class="num"><span data-count="0.5" data-dec="1">0.5</span><em>個月</em></div><p>AI 化 SDLC 提前上線</p></div>
+      <div class="metric" data-reveal style="--d:.3s"><div class="num"><span data-count="30">30</span><em>+</em></div><p>後端共用 Service</p></div>
+    </section>
+
+    <h2 data-reveal>Experience</h2>
+    <div class="job-head" data-reveal>
+      <h4>經貿聯網科技股份有限公司</h4>
+      <time>2023.02 – 至今</time>
+    </div>
+    <p class="job-role" data-reveal>軟體工程師 · 全端開發／系統分析／專案 PM · 銀行授信、風險審查、電信與 AI 整合平台</p>
+
+    <div class="proj" data-reveal>
+      <div class="proj-head"><h5>銀行授信系統微服務改版</h5><span class="role">微服務重構 · 全端開發</span></div>
+      <ul>
+        <li>主導將單體架構依服務性質拆分為 <strong>5 個微服務 Pod</strong>，部署於 Red Hat OpenShift，並以 Jenkins 建置 CI/CD 自動化部署。</li>
+        <li>封裝 30+ 項高複用後端共用 Service，落實弱掃修復、Log 稽核軌跡與進退版機制；上線半年<strong>紙本作業減少 50% 以上</strong>。</li>
+      </ul>
+      <div class="tech"><span>Spring Boot</span><span>React</span><span>Oracle</span><span>OpenShift</span><span>Jenkins</span></div>
+    </div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-head"><h5>ESG 評等自動化系統</h5><span class="role">主導設計 · Multi-Agent</span></div>
+      <ul>
+        <li>設計 AutoGen 多代理分工（資料擷取、摘要、審查）與 Agent 間協作審查流程，確保報告品質。</li>
+        <li>人工審閱工作量<strong>減少 30%</strong>；六個月內<strong>獲金融機構正式採用</strong>，完成 POC 商業落地。</li>
+      </ul>
+      <div class="tech"><span>Python</span><span>AutoGen</span><span>Vue.js</span></div>
+    </div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-head"><h5>負面新聞風險分析系統</h5><span class="role">主導開發 · RAG</span></div>
+      <ul>
+        <li>以 Selenium 爬蟲與新聞 API 蒐集企業／個人戶新聞，高風險關鍵字篩檢後串接司法院裁判書 API 二次交叉比對。</li>
+        <li>串接 OpenAI 產出風險摘要報告並持續優化 Prompt，協助審核人員<strong>快速掌握客戶風險輪廓</strong>。</li>
+      </ul>
+      <div class="tech"><span>Python</span><span>RAG</span><span>OpenAI API</span><span>Selenium</span><span>Vue.js</span></div>
+    </div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-head"><h5>電信業系統重構</h5><span class="role">專案 PM · SA · PG</span></div>
+      <ul>
+        <li>擔任 PM 帶領 3 人團隊，負責時程規劃、風險控管與利害關係人溝通。</li>
+        <li>舊系統文件缺漏下以 AI 逆向工程還原業務邏輯，建立「需求分析 → 系統設計 → 開發」AI 輔助 SDLC 標準流程，<strong>專案提早半個月上線</strong>。</li>
+      </ul>
+      <div class="tech"><span>Spring Boot</span><span>Vue.js</span><span>Oracle</span><span>Claude Code</span></div>
+    </div>
+
+    <section class="prev">
+      <h2 data-reveal>Earlier Career</h2>
+      <div class="job-head" data-reveal>
+        <h4>師盟共同學習教室</h4>
+        <time>2014.12 – 2023.01</time>
+      </div>
+      <p class="job-role" data-reveal>數學講師 · 教學組長 · 教學顧問</p>
+      <p class="prev-desc" data-reveal>帶領 4 人數學教學團隊，主編教材與模擬試題，擔任數理資優班與科學班培訓講師；轉任顧問期間制定新進講師培訓計畫並追蹤成效。</p>
+    </section>
+  </main>
+</article>
+
+<a class="dl" href="王尉竹_ArthurWang_Resume.pdf" download>
+  <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>下載 PDF
+</a>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-reveal]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  function countUp(el){
+    var target = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), t0 = null, dur = 1200;
+    el.textContent = (0).toFixed(dec);
+    function step(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      en.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(en.target);
+    });
+  }, {threshold: .15, rootMargin: '0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+  // printing should always show everything
+  addEventListener('beforeprint', function(){ els.forEach(function(el){ el.classList.add('in'); }); });
+})();
+</script>
+</body>
+</html>
